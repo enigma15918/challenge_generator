@@ -21,7 +21,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
 
         if (selectedOption === null) return "option";
 
-        if (index === challenge.correct_answer_id){
+        if (index === Number(challenge.correct_answer_id)){
             return "correct option"
         }
 
@@ -32,7 +32,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
         return "option"
 
     }
-
+    console.log(challenge.explanation)
     return <div className="challenge-display">
         <p><strong>Difficulty</strong>:{challenge.difficulty}</p>
         <p className="challenge-title">{challenge.title}</p>
@@ -66,6 +66,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
 
                     <h4>Explaination</h4>
                     <p>{challenge.explanation}</p>
+                    
 
                 </div>
             )}

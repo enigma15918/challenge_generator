@@ -11,7 +11,7 @@ from .routes import challenge
 
 app=FastAPI()
 
-app.include_router(challenge.router,prefix="/api")
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,3 +24,4 @@ app.add_middleware(
 
 
 
+app.include_router(challenge.router,prefix="/api")
