@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-clerk_sdk=Clerk(bearer=os.getenv("CLERK_SECRET_KEY"))
+clerk_sdk=Clerk(bearer_auth=os.getenv("CLERK_SECRET_KEY"))
 
 def authenticate_and_get_user_details(request):
 
@@ -18,7 +18,7 @@ def authenticate_and_get_user_details(request):
         request_state=clerk_sdk.authenticate_request(
             request,
             AuthenticateRequestOptions(
-                authorized_parties=["http://localhost:5173","http://localhost:5174"],
+                # authorized_parties=["http://localhost:5173","http://localhost:5174"],
                 jwt_key=os.get_env("JWT_KEY")
             )
         )

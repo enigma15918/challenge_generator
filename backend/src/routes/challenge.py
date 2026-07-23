@@ -12,6 +12,8 @@ from ..database.db import (
 )
 
 
+from ..ai_generator import generate_challenge_with_ai
+
 from ..utils import authenticate_and_get_user_details
 
 from ..database.models import get_db
@@ -51,13 +53,27 @@ async def generate_challenge(request:Request,db:Session=Depends(get_db)):
             raise HTTPException(status_code=429,detail="Quota exhausted")
 
 
-        challenge_data=None
+        challenge_data=generate_challenge_with_ai(request.difficulty)
+
+        new_challenge=create_challenge(
+            db=db,
+            difficulty=request.difficulty,
+            created_by=user_id,
+            **challenge_data
+        )
 
         quota.remaining_quota -=1
 
         db.commit()
 
-        return challenge_data
+        return {
+            "id":new_challenge.id,
+            "difficulty":request.difficulty,
+            "title":new_challenge.title,
+            "options":json.loads(new_challenge.options),
+            "correct_answer":new_challenge.explanation,
+            "timestamp":new_challenge.date_created.isoformat()
+        }
 
 
 

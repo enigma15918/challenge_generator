@@ -6,9 +6,12 @@ from clerk_backend_api import Clerk
 
 import os
 
-clerk_sdk=Clerk(bearer_auth=os.getenv("CLERK_SECRET_KEY"))
+from .routes import challenge
+
 
 app=FastAPI()
+
+app.include_router(challenge.router,prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,3 +21,6 @@ app.add_middleware(
     allow_headers=["*"]
 
 )
+
+
+
