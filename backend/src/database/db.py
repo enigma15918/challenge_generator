@@ -42,7 +42,7 @@ def create_challenge(
 
         options:str,
 
-        correct_answer_id:int,
+        correct_answer:int,
 
         explanation:str,
 
@@ -54,7 +54,7 @@ def create_challenge(
         created_by=created_by,
         title=title,
         options=options,
-        correct_answer_id=correct_answer_id,
+        correct_answer=correct_answer,
         explanation=explanation
     )
 

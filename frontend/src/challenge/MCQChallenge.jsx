@@ -1,9 +1,13 @@
 import "react"
 
-import {useState} from "react"
+import {useState,useEffect} from "react"
 
 export default function MCQChallenge({challenge,showExplaination=false}){
 
+    // console.log("Full Challenge Object:", challenge);
+    useEffect(() => {
+        setSelectedOption(null);
+    }, [challenge]);
     const [selectedOption,setSelectedOption] = useState(null)
 
     const [shouldShowExplaination,setShouldShowExplaination] = useState(showExplaination)
@@ -19,13 +23,15 @@ export default function MCQChallenge({challenge,showExplaination=false}){
 
     const getOptionClass=(index)=>{
 
+        console.log("Index clicked:", index, "Correct ID from DB:", challenge.correct_answer, "Converted:", Number(challenge.correct_answer));
+
         if (selectedOption === null) return "option";
 
-        if (index === Number(challenge.correct_answer_id)){
-            return "correct option"
+        if (index === Number(challenge.correct_answer)){
+            return "option correct"
         }
 
-        if (selectedOption === index && index !== challenge.correct_answer_id){
+        if (selectedOption === index && index !== Number(challenge.correct_answer)){
             return "option incorrect"
         }
 

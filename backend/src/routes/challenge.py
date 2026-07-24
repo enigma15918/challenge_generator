@@ -61,7 +61,7 @@ async def generate_challenge(request:ChallengeRequest,request_obj:Request,db:Ses
             created_by=user_id,
             title=challenge_data["title"],
             options=json.dumps(challenge_data["options"]),
-            correct_answer_id=challenge_data["correct_answer_id"],
+            correct_answer=challenge_data["correct_answer"],
             explanation=challenge_data["explanation"]
         )
 
@@ -74,7 +74,8 @@ async def generate_challenge(request:ChallengeRequest,request_obj:Request,db:Ses
             "difficulty":request.difficulty,
             "title":new_challenge.title,
             "options":json.loads(new_challenge.options),
-            "correct_answer":new_challenge.explanation,
+            "correct_answer":new_challenge.correct_answer,
+            "explanation":new_challenge.explanation,
             "timestamp":new_challenge.date_created.isoformat()
         }
 

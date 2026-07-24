@@ -24,7 +24,7 @@ class Challenge(Base):
 
     options=Column(String,nullable=False)
 
-    correct_answer_id=Column(Integer,nullable=False)
+    correct_answer=Column(Integer,nullable=False)
 
     explanation=Column(String,nullable=False)
 
