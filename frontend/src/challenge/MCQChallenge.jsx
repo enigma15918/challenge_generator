@@ -1,7 +1,8 @@
 import "react"
 
 import {useState,useEffect} from "react"
-
+import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown"
 export default function MCQChallenge({challenge,showExplaination=false}){
 
     // console.log("Full Challenge Object:", challenge);
@@ -41,7 +42,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
     // console.log(challenge.explanation)
     return <div className="challenge-display">
         <p><strong>Difficulty</strong>:{challenge.difficulty}</p>
-        <p className="challenge-title">{challenge.title}</p>
+        <ReactMarkdown>{challenge.title}</ReactMarkdown>
 
 
         <div className="options">
@@ -71,7 +72,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
                 <div className="explanation" >
 
                     <h4>Explaination</h4>
-                    <p>{challenge.explanation}</p>
+                    <Markdown>{challenge.explanation}</Markdown>
                     
 
                 </div>
