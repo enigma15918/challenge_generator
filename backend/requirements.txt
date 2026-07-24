@@ -5,3 +5,4 @@ svix
 pydantic
 python-dotenv
 requests
+clerk-backend-api
