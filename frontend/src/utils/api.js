@@ -12,7 +12,7 @@ export const useApi=()=>{
             }
         }
 
-        const response = await fetch(`http://localhost:8000/api/${endpoint}`,{
+        const response = await fetch(`https://challengegenerator-production.up.railway.app/api/${endpoint}`,{
             ...defaultOptions,
             ...options
         })
