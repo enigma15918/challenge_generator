@@ -23,7 +23,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
 
     const getOptionClass=(index)=>{
 
-        console.log("Index clicked:", index, "Correct ID from DB:", challenge.correct_answer, "Converted:", Number(challenge.correct_answer));
+        // console.log("Index clicked:", index, "Correct ID from DB:", challenge.correct_answer, "Converted:", Number(challenge.correct_answer));
 
         if (selectedOption === null) return "option";
 
@@ -38,7 +38,7 @@ export default function MCQChallenge({challenge,showExplaination=false}){
         return "option"
 
     }
-    console.log(challenge.explanation)
+    // console.log(challenge.explanation)
     return <div className="challenge-display">
         <p><strong>Difficulty</strong>:{challenge.difficulty}</p>
         <p className="challenge-title">{challenge.title}</p>

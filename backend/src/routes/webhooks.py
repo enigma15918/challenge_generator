@@ -14,7 +14,7 @@ from svix.webhooks import Webhook
 
 
 
-router=APIRouter
+router=APIRouter()
 
 
 @router.post("/clerk")
